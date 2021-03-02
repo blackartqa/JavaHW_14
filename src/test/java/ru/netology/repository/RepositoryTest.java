@@ -3,7 +3,9 @@ package ru.netology.repository;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import ru.netology.domain.Issue;
+
 import java.util.*;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class RepositoryTest {
@@ -14,6 +16,7 @@ class RepositoryTest {
     private Issue issue2 = new Issue(1002, false, "Author2", 12, new HashSet<String>(Arrays.asList("label13", "label4", "label7")), new HashSet<String>(Arrays.asList("Assignee1", "Assignee3", "Assignee4")));
     private Issue issue3 = new Issue(1003, true, "Author1", 2, new HashSet<String>(Arrays.asList("label1", "label3", "label5")), new HashSet<String>(Arrays.asList("Assignee3", "Assignee5", "Assignee6")));
     private Issue issue4 = new Issue(1004, false, "Author2", 21, new HashSet<String>(Arrays.asList("label4", "label3", "label9")), new HashSet<String>(Arrays.asList("Assignee1", "Assignee2", "Assignee4")));
+
     @Nested
     public class EmptyRepository {
         @Test
@@ -142,7 +145,7 @@ class RepositoryTest {
 
         @Test
         void shouldFindOpenIfOpen() {
-            repository.addAll(List.of(issue1,issue2,issue3,issue4));
+            repository.addAll(List.of(issue1, issue2, issue3, issue4));
             List<Issue> expected = new ArrayList<>(List.of(issue1, issue3));
             List<Issue> actual = repository.findOpen();
             assertEquals(expected, actual);
@@ -150,7 +153,7 @@ class RepositoryTest {
 
         @Test
         void shouldReturnEmptyIfNoOpen() {
-            repository.addAll(List.of(issue2,issue4));
+            repository.addAll(List.of(issue2, issue4));
             List<Issue> expected = new ArrayList<>();
             List<Issue> actual = repository.findOpen();
             assertEquals(expected, actual);
@@ -158,7 +161,7 @@ class RepositoryTest {
 
         @Test
         void shouldFindClosedIfClosed() {
-            repository.addAll(List.of(issue1,issue2,issue3,issue4));
+            repository.addAll(List.of(issue1, issue2, issue3, issue4));
             List<Issue> expected = new ArrayList<>(List.of(issue2, issue4));
             List<Issue> actual = repository.findClosed();
             assertEquals(expected, actual);
@@ -166,7 +169,7 @@ class RepositoryTest {
 
         @Test
         void shouldReturnEmptyIfNoClosed() {
-            repository.addAll(List.of(issue1,issue3));
+            repository.addAll(List.of(issue1, issue3));
             List<Issue> expected = new ArrayList<>();
             List<Issue> actual = repository.findClosed();
             assertEquals(expected, actual);
@@ -174,7 +177,7 @@ class RepositoryTest {
 
         @Test
         void shouldClose() {
-            repository.addAll(List.of(issue1,issue2,issue3,issue4));
+            repository.addAll(List.of(issue1, issue2, issue3, issue4));
             repository.closeById(1001);
             List<Issue> expected = new ArrayList<>(List.of(issue1, issue2, issue4));
             List<Issue> actual = repository.findClosed();
@@ -183,7 +186,7 @@ class RepositoryTest {
 
         @Test
         void shouldDoNothingIfWrongIdWhenClose() {
-            repository.addAll(List.of(issue1,issue2,issue3,issue4));
+            repository.addAll(List.of(issue1, issue2, issue3, issue4));
             repository.closeById(1005);
             List<Issue> expected = new ArrayList<>(List.of(issue2, issue4));
             List<Issue> actual = repository.findClosed();
@@ -192,7 +195,7 @@ class RepositoryTest {
 
         @Test
         void shouldDoNothingIfNothingToClose() {
-            repository.addAll(List.of(issue2,issue4));
+            repository.addAll(List.of(issue2, issue4));
             repository.closeById(1004);
             List<Issue> expected = new ArrayList<>(List.of(issue2, issue4));
             List<Issue> actual = repository.findClosed();
@@ -201,7 +204,7 @@ class RepositoryTest {
 
         @Test
         void shouldOpen() {
-            repository.addAll(List.of(issue2,issue4));
+            repository.addAll(List.of(issue2, issue4));
             repository.openById(1004);
             List<Issue> expected = new ArrayList<>(List.of(issue4));
             List<Issue> actual = repository.findOpen();
@@ -210,7 +213,7 @@ class RepositoryTest {
 
         @Test
         void shouldDoNothingIfWrongIdWhenOpen() {
-            repository.addAll(List.of(issue1,issue2,issue3,issue4));
+            repository.addAll(List.of(issue1, issue2, issue3, issue4));
             repository.openById(1005);
             List<Issue> expected = new ArrayList<>(List.of(issue1, issue3));
             List<Issue> actual = repository.findOpen();
@@ -219,7 +222,7 @@ class RepositoryTest {
 
         @Test
         void shouldDoNothingIfNothingToOpen() {
-            repository.addAll(List.of(issue1,issue3));
+            repository.addAll(List.of(issue1, issue3));
             repository.openById(1001);
             List<Issue> expected = new ArrayList<>(List.of(issue1, issue3));
             List<Issue> actual = repository.findOpen();

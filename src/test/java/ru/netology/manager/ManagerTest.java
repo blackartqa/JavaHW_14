@@ -38,22 +38,22 @@ class ManagerTest {
 
         @Test
         void shouldReturnEmptyWhenFindByAuthor() {
-            Collection <Issue> expected = new ArrayList<>();
-            Collection <Issue> actual = manager.findByAuthor("Lada");
+            Collection<Issue> expected = new ArrayList<>();
+            Collection<Issue> actual = manager.findByAuthor("Lada");
             assertEquals(expected, actual);
         }
 
         @Test
         void shouldReturnEmptyWhenFindByLabel() {
-            Collection <Issue> expected = new ArrayList<>();
-            Collection <Issue> actual = manager.findByLabel( new HashSet<String>(Arrays.asList("label1")));
+            Collection<Issue> expected = new ArrayList<>();
+            Collection<Issue> actual = manager.findByLabel(new HashSet<String>(Arrays.asList("label1")));
             assertEquals(expected, actual);
         }
 
         @Test
         void shouldReturnEmptyWhenFindByAssignee() {
-            Collection <Issue> expected = new ArrayList<>();
-            Collection <Issue> actual = manager.findByAssignee( new HashSet<String>(Arrays.asList("nicklada")));
+            Collection<Issue> expected = new ArrayList<>();
+            Collection<Issue> actual = manager.findByAssignee(new HashSet<String>(Arrays.asList("nicklada")));
             assertEquals(expected, actual);
         }
     }
@@ -81,15 +81,15 @@ class ManagerTest {
         void shouldFindByAuthor() {
             manager.issueAdd(issue1);
             Collection<Issue> expected = new ArrayList<>(List.of(issue1));
-            Collection <Issue> actual = manager.findByAuthor("Author1");
+            Collection<Issue> actual = manager.findByAuthor("Author1");
             assertEquals(expected, actual);
         }
 
         @Test
         void shouldReturnEmptyIfNoAuthor() {
             manager.issueAdd(issue1);
-            Collection <Issue> expected = new ArrayList<>();
-            Collection <Issue> actual = manager.findByAuthor("Bob");
+            Collection<Issue> expected = new ArrayList<>();
+            Collection<Issue> actual = manager.findByAuthor("Bob");
             assertEquals(expected, actual);
         }
 
@@ -97,15 +97,15 @@ class ManagerTest {
         void shouldFindByLabel() {
             manager.issueAdd(issue2);
             Collection<Issue> expected = new ArrayList<>(List.of(issue2));
-            Collection <Issue> actual = manager.findByLabel( new HashSet<String>(Arrays.asList("label7")));
+            Collection<Issue> actual = manager.findByLabel(new HashSet<String>(Arrays.asList("label7")));
             assertEquals(expected, actual);
         }
 
         @Test
         void shouldReturnEmptyIfNoLabel() {
             manager.issueAdd(issue1);
-            Collection <Issue> expected = new ArrayList<>();
-            Collection <Issue> actual = manager.findByLabel( new HashSet<String>(Arrays.asList("label19")));
+            Collection<Issue> expected = new ArrayList<>();
+            Collection<Issue> actual = manager.findByLabel(new HashSet<String>(Arrays.asList("label19")));
             assertEquals(expected, actual);
         }
 
@@ -113,15 +113,15 @@ class ManagerTest {
         void shouldFindByAssignee() {
             manager.issueAdd(issue1);
             Collection<Issue> expected = new ArrayList<>(List.of(issue1));
-            Collection <Issue> actual = manager.findByAssignee( new HashSet<String>(Arrays.asList("Assignee1")));
+            Collection<Issue> actual = manager.findByAssignee(new HashSet<String>(Arrays.asList("Assignee1")));
             assertEquals(expected, actual);
         }
 
         @Test
         void shouldReturnEmptyWhenFindByAssignee() {
             manager.issueAdd(issue1);
-            Collection <Issue> expected = new ArrayList<>();
-            Collection <Issue> actual = manager.findByAssignee( new HashSet<String>(Arrays.asList("emma")));
+            Collection<Issue> expected = new ArrayList<>();
+            Collection<Issue> actual = manager.findByAssignee(new HashSet<String>(Arrays.asList("emma")));
             assertEquals(expected, actual);
         }
     }
