@@ -53,7 +53,7 @@ class ManagerTest {
         @Test
         void shouldReturnEmptyWhenFindByAssignee() {
             Collection<Issue> expected = new ArrayList<>();
-            Collection<Issue> actual = manager.findByAssignee(new HashSet<String>(Arrays.asList("nicklada")));
+            Collection<Issue> actual = manager.findByAssignee(new HashSet<String>(Arrays.asList("Assignee1")));
             assertEquals(expected, actual);
         }
     }
@@ -89,7 +89,7 @@ class ManagerTest {
         void shouldReturnEmptyIfNoAuthor() {
             manager.issueAdd(issue1);
             Collection<Issue> expected = new ArrayList<>();
-            Collection<Issue> actual = manager.findByAuthor("Bob");
+            Collection<Issue> actual = manager.findByAuthor("Author3");
             assertEquals(expected, actual);
         }
 
@@ -121,7 +121,7 @@ class ManagerTest {
         void shouldReturnEmptyWhenFindByAssignee() {
             manager.issueAdd(issue1);
             Collection<Issue> expected = new ArrayList<>();
-            Collection<Issue> actual = manager.findByAssignee(new HashSet<String>(Arrays.asList("emma")));
+            Collection<Issue> actual = manager.findByAssignee(new HashSet<String>(Arrays.asList("Assignee5")));
             assertEquals(expected, actual);
         }
     }
@@ -166,7 +166,7 @@ class ManagerTest {
         void shouldReturnEmptyIfNoAuthor() {
             manager.addAll(List.of(issue1, issue2, issue3, issue4));
             List<Issue> expected = new ArrayList<>();
-            List<Issue> actual = manager.findByAuthor("Bob");
+            List<Issue> actual = manager.findByAuthor("Author3");
             assertEquals(expected, actual);
         }
 
@@ -198,7 +198,7 @@ class ManagerTest {
         void shouldReturnEmptyWhenFindByAssignee() {
             manager.addAll(List.of(issue1, issue2, issue3, issue4));
             List<Issue> expected = new ArrayList<>();
-            List<Issue> actual = manager.findByAssignee(new HashSet<String>(Arrays.asList("Emma")));
+            List<Issue> actual = manager.findByAssignee(new HashSet<String>(Arrays.asList("Assignee14")));
             assertEquals(expected, actual);
         }
     }
