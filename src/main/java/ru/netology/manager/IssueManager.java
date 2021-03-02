@@ -1,6 +1,5 @@
 package ru.netology.manager;
 
-
 import ru.netology.domain.Issue;
 import ru.netology.repository.IssueRepository;
 
